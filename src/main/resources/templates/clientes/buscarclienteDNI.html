@@ -8,19 +8,19 @@
 </head>
 <body>
 
-<form class="form-container" th:action="@{/clientes}" th:object="${formBean}" method="post">
+<form class="form-container" th:action="@{/cliente}" th:object="${formBean}" method="get">
     
     <h2>Buscar Cliente</h2>
     <div>
         <input type="text" id="dni" name="dni" placeholder=" " th:field="*{dni}">
         <label for="dni">Ingrese DNI del cliente</label>
     </div>
-    <p th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Error message</p>
+
     
     <!-- Add a hidden field for 'action' -->
     <input type="hidden" name="action" value="Buscar">
     
-    <button type="submit">Buscar</button>
+    <button type="submit" th:action="@{/cliente}">Buscar</button>
 </form>
 
 

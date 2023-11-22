@@ -27,18 +27,28 @@ public class ClienteController {
 	@GetMapping("/clientes")
 	public String tomarDatos(Model model) {
 
+		
 		FormCliente form = new FormCliente();
 		model.addAttribute("formBean", form);
 	
-		return "clientes/buscarclienteDNI";
+		return "clientes/buscarclienteDNI.html";
 	}
 	
-	@GetMapping("/clientes")
-
-	// @ModelAttribute("allClientes")
-	// public List<Cliente> allClientes(){
-	// return this.clienteServi.getClientes();
-	// }
-
+	@GetMapping("/cliente")
+	public String encontrarCliente(ModelMap model, @RequestParam Integer dni) {
+		
+		Cliente clienteEncontrado = clienteServi.findCliente(dni);
+		System.out.println(clienteEncontrado);
+		
+		if(clienteEncontrado == null) {
+			model.clear();
+    		return "redirect:/";
+		}
+		else {
+			model.addAttribute("cliente", clienteEncontrado);
+			return "clientes/dni";
+		}
+		
+	}
 	
 }
