@@ -9,29 +9,104 @@
 </head>
 
 <body>
+	<header>
+		<div class="container">
+			
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" th:href="@{/}" >Home <span class="sr-only"></span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/vuelos/registro">Lista Vuelos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/vuelos">Agregar Vuelo</a>
+						</li>
+						<li></li>
+						<li></li>
+						<li>
+							<a class="nav-link" th:href="@{/vuelos/hoy}">Ver vuelos para hoy <span class="sr-only"></span></a>
+						</li>
+						
+					</ul>
+					
+				</div>
+			</nav>
+		</div>
+	</header>
+<br>
+
+
 
 	<div class="container">
+		
+			<form th:action="@{/vuelos/fecha}" th:object="${formBean}" method="get" >
+                <label>Fecha:
+                    <input type="date" name="fechaFiltrada" >
+                </label>
+                <button>Buscar por fecha</button>
+            </form>
+            <br>
+
+    
+
+			 <form th:action="@{/vuelos/filtroOrigen}" th:object="${formCiudad}" method="get" >
+                <label>Origen:
+                    <select name="ciudad" >
+                        <option value="">-- Seleccionar Origen --</option>
+                        <option th:each="ciudad : ${allCiudades}" th:value="${ciudad.nombre}"
+                            th:text="${ciudad.nombre}">
+                        </option>
+                    </select>
+                </label>
+                <button>Buscar por Origen</button>
+            </form> 
+            
+             <form th:action="@{/vuelos/filtroDestino}" th:object="${formCiudad}" method="get" >
+                <label>Destino:
+                    <select name="ciudad" >
+                        <option value="">-- Seleccionar Destino --</option>
+                        <option th:each="ciudad : ${allCiudades}" th:value="${ciudad.nombre}"
+                            th:text="${ciudad.nombre}">
+                        </option>
+                    </select>
+                </label>
+                <button>Buscar por Destino</button>
+            </form> 
+            
+           
+            
+            <br>
+            
 		<div class="row">
-			<h1>Vuelos Registrados</h1>
+			<h2>Vuelos Registrados</h2>
 		</div>
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Nro Vuelo</th>
-					<th>destino</th>
-					<th>origen</th>
+					<th>Fecha</th>
+					<th>Número</th>
+					<th>Tipo de Vuelo</th>
+					<th>Estado</th>
+					<th>Id Avion</th>
+					
 				</tr>
 			</thead>
-			<tbody>
+
 			<tbody>
 				<tr th:each="vuelo : ${vuelos}">
+					<td th:text="${vuelo.fechaPartida}"></td>
 					<td th:text="${vuelo.nroVuelo}"></td>
-					<td th:text="${vuelo.destino}"></td>
-					<td th:text="${vuelo.origen}"></td>
-				
-				</tr>
-			</tbody>
+					<td th:text="${vuelo.tipoVuelo}"></td>
+					<td th:text="${vuelo.estado}"></td>
+					<td th:text="${vuelo.avion.idAvion}"></td>
+					
 
+				</tr>
 
 			</tbody>
 		</table>

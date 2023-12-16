@@ -4,14 +4,6 @@ public class FormCliente {
 	
 	private Integer dni;
 
-	public Integer getDni() {
-		return dni;
-	}
-
-	public void setDni(Integer dni) {
-		this.dni = dni;
-	}
-
 	public FormCliente() {
 		super();
 	}
@@ -21,6 +13,13 @@ public class FormCliente {
 		this.dni = dni;
 	}
 	
+	public Integer getDni() {
+		return dni;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
 	
 
 }

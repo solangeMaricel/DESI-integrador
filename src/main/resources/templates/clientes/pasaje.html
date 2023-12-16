@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <main>
+        <section>
+            <h2>Pasaje Creado</h2>
+            <p>El pasaje se ha creado correctamente. Datos:</p>
+           
+        </section>
+        <section>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Número de Ticket</th>
+                        <th>Número de vuelo</th>
+                        <th>Número de asiento</th>
+                        <th>Fecha de partida</th>
+                        <th>Hora de partida</th>
+                        <th>Dni del Cliente</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr>
+                        <td th:text="${ticket.id}"></td>
+                        <td th:text="${ticket.nroVuelo}"></td>
+                        <td th:text="${ticket.nroVuelo}"></td>
+                        <td th:text="${ticket.nroVuelo}"></td>
+                        <td th:text="${ticket.nroVuelo}"></td>
+                        <td th:text="${ticket.dni}"></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+        </section>
+    </main>
+    
+</body>
+</html>

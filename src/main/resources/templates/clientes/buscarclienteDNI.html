@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Cliente</title>
-    <link rel="stylesheet" href="estilos.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Buscar Cliente</title>
+	<link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
+	<section>
+		<h2>Buscar Cliente</h2>
+		<form class="form-container" th:action="@{/cliente}" th:object="${formBean}" method="get">
+			<div>
+				<label>Ingrese DNI del cliente
+					<input type="tel" placeholder=" " th:field="*{dni}" pattern="[0-9]*" required>
+				</label>
+			</div>
 
-<form class="form-container" th:action="@{/cliente}" th:object="${formBean}" method="get">
-    
-    <h2>Buscar Cliente</h2>
-    <div>
-        <input type="text" id="dni" name="dni" placeholder=" " th:field="*{dni}">
-        <label for="dni">Ingrese DNI del cliente</label>
-    </div>
-
-    
-    <!-- Add a hidden field for 'action' -->
-    <input type="hidden" name="action" value="Buscar">
-    
-    <button type="submit" th:action="@{/cliente}">Buscar</button>
-</form>
-
+			<button>Buscar</button>
+			<a th:href="@{/}" >Atras</a>
+			
+		</form>
+	</section>
 
 </body>
+
 </html>
